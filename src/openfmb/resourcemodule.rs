@@ -1,5 +1,7 @@
+use serde::{Serialize,Deserialize};
+
 /// Resource reading value
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ResourceReading {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -15,7 +17,7 @@ pub struct ResourceReading {
     pub reading_mmxu: ::std::option::Option<super::commonmodule::ReadingMmxu>,
 }
 /// Resource reading profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ResourceReadingProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -31,7 +33,7 @@ pub struct ResourceReadingProfile {
     pub resource_reading: ::std::option::Option<ResourceReading>,
 }
 /// Current status information relevant to an entity.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ResourceStatus {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -50,7 +52,7 @@ pub struct ResourceStatus {
     pub string_status_ggio: ::std::vec::Vec<super::commonmodule::StringStatusGgio>,
 }
 /// Resource status module
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ResourceStatusProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]

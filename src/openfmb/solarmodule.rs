@@ -1,5 +1,7 @@
+use serde::{Serialize,Deserialize};
+
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarPoint {
     /// Enable frequency set point
     #[prost(message, optional, tag="1")]
@@ -36,21 +38,21 @@ pub struct SolarPoint {
     pub start_time: ::std::option::Option<super::commonmodule::ControlTimestamp>,
 }
 /// Curve shape setting (FC=SP) (CSG_SP)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarCsg {
     /// The array with the points specifying a curve shape.
     #[prost(message, repeated, tag="1")]
     pub crv_pts: ::std::vec::Vec<SolarPoint>,
 }
 /// OpenFMB specialization for control schedule using:  LN: Schedule   Name: FSCH
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarControlScheduleFsch {
     /// Discrete value in SolarCSG type
     #[prost(message, optional, tag="1")]
     pub val_dcsg: ::std::option::Option<SolarCsg>,
 }
 /// Specialized 61850 FSCC class.  LN: Schedule controller   Name: FSCC
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarControlFscc {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -60,7 +62,7 @@ pub struct SolarControlFscc {
     pub solar_control_schedule_fsch: ::std::option::Option<SolarControlScheduleFsch>,
 }
 /// Solar control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -73,14 +75,14 @@ pub struct SolarControl {
     pub solar_control_fscc: ::std::option::Option<SolarControlFscc>,
 }
 /// MISSING DOCUMENTATION!!!
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarInverter {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub conducting_equipment: ::std::option::Option<super::commonmodule::ConductingEquipment>,
 }
 /// Solar control profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarControlProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -96,7 +98,7 @@ pub struct SolarControlProfile {
     pub solar_inverter: ::std::option::Option<SolarInverter>,
 }
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarPointStatus {
     /// Enable frequency set point
     #[prost(message, optional, tag="1")]
@@ -127,7 +129,7 @@ pub struct SolarPointStatus {
     pub voltage_set_point_enabled: ::std::option::Option<super::commonmodule::ControlDpc>,
 }
 /// Specialized 61850 ZGEN class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarEventAndStatusZgen {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -146,7 +148,7 @@ pub struct SolarEventAndStatusZgen {
     pub point_status: ::std::option::Option<SolarPointStatus>,
 }
 /// Specialized 61850 ZGEN class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarEventZgen {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -156,7 +158,7 @@ pub struct SolarEventZgen {
     pub gri_mod: ::std::option::Option<super::commonmodule::EngGridConnectModeKind>,
 }
 /// Solar event
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarEvent {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -166,7 +168,7 @@ pub struct SolarEvent {
     pub solar_event_zgen: ::std::option::Option<SolarEventZgen>,
 }
 /// Solar event profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarEventProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -182,7 +184,7 @@ pub struct SolarEventProfile {
     pub solar_inverter: ::std::option::Option<SolarInverter>,
 }
 /// Solar reading value
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarReading {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -198,7 +200,7 @@ pub struct SolarReading {
     pub reading_mmxu: ::std::option::Option<super::commonmodule::ReadingMmxu>,
 }
 /// Solar reading profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarReadingProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -214,7 +216,7 @@ pub struct SolarReadingProfile {
     pub solar_reading: ::std::option::Option<SolarReading>,
 }
 /// Specialized 61850 ZGEN LN class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarStatusZgen {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -224,7 +226,7 @@ pub struct SolarStatusZgen {
     pub gri_mod: ::std::option::Option<super::commonmodule::EngGridConnectModeKind>,
 }
 /// Solar status
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarStatus {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -234,7 +236,7 @@ pub struct SolarStatus {
     pub solar_status_zgen: ::std::option::Option<SolarStatusZgen>,
 }
 /// Solar status profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SolarStatusProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]

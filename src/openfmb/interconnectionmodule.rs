@@ -1,5 +1,7 @@
+use serde::{Serialize,Deserialize};
+
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct InterconnectionPoint {
     /// Black start enable
     #[prost(message, optional, tag="1")]
@@ -33,21 +35,21 @@ pub struct InterconnectionPoint {
     pub start_time: ::std::option::Option<super::commonmodule::Timestamp>,
 }
 /// Curve shape setting (FC=SP) (CSG_SP)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct InterconnectionCsg {
     /// The array with the points specifying a curve shape.
     #[prost(message, repeated, tag="1")]
     pub crv_pts: ::std::vec::Vec<InterconnectionPoint>,
 }
 /// OpenFMB specialization for control schedule using:  LN: Schedule   Name: FSCH
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct InterconnectionControlScheduleFsch {
     /// Discrete value in InterconnectionCSG type
     #[prost(message, optional, tag="1")]
     pub val_dcsg: ::std::option::Option<InterconnectionCsg>,
 }
 /// Specialized 61850 FSCC class for interconnection schedule
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct InterconnectionScheduleFscc {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -57,7 +59,7 @@ pub struct InterconnectionScheduleFscc {
     pub interconnection_control_schedule_fsch: ::std::vec::Vec<InterconnectionControlScheduleFsch>,
 }
 /// Interconnection schedule
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct InterconnectionSchedule {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -70,7 +72,7 @@ pub struct InterconnectionSchedule {
     pub interconnection_schedule_fscc: ::std::option::Option<InterconnectionScheduleFscc>,
 }
 /// Planned interconnection schedule profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct PlannedInterconnectionScheduleProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -83,7 +85,7 @@ pub struct PlannedInterconnectionScheduleProfile {
     pub interconnection_schedule: ::std::option::Option<InterconnectionSchedule>,
 }
 /// Requested interconnection schedule profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RequestedInterconnectionScheduleProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]

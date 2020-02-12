@@ -1,5 +1,7 @@
+use serde::{Serialize,Deserialize};
+
 /// OpenFMB specialization for switch control:  LN: Circuit switch   Name: XSWI
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchDiscreteControlXswi {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -9,7 +11,7 @@ pub struct SwitchDiscreteControlXswi {
     pub pos: ::std::option::Option<super::commonmodule::ControlDpc>,
 }
 /// Switch discrete control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchDiscreteControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -25,14 +27,14 @@ pub struct SwitchDiscreteControl {
     pub device_control: ::std::option::Option<super::commonmodule::DeviceControl>,
 }
 /// A ProtectedSwitch is a switching device that can be operated by ProtectionEquipment.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ProtectedSwitch {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub conducting_equipment: ::std::option::Option<super::commonmodule::ConductingEquipment>,
 }
 /// Switch control profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchDiscreteControlProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -48,7 +50,7 @@ pub struct SwitchDiscreteControlProfile {
     pub switch_discrete_control: ::std::option::Option<SwitchDiscreteControl>,
 }
 /// OpenFMB specialization for SwitchEventProfile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchEventXswi {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -61,7 +63,7 @@ pub struct SwitchEventXswi {
     pub pos: ::std::option::Option<super::commonmodule::StatusDps>,
 }
 /// Switch event
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchEvent {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -71,7 +73,7 @@ pub struct SwitchEvent {
     pub switch_event_xswi: ::std::option::Option<SwitchEventXswi>,
 }
 /// Switch event profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchEventProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -87,7 +89,7 @@ pub struct SwitchEventProfile {
     pub switch_event: ::std::option::Option<SwitchEvent>,
 }
 /// Switch reading value
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchReading {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -106,7 +108,7 @@ pub struct SwitchReading {
     pub reading_mmxu: ::std::option::Option<super::commonmodule::ReadingMmxu>,
 }
 /// Switch reading profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchReadingProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -122,7 +124,7 @@ pub struct SwitchReadingProfile {
     pub switch_reading: ::std::vec::Vec<SwitchReading>,
 }
 /// OpenFMB specialization for SwitchStatusProfile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchStatusXswi {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -135,7 +137,7 @@ pub struct SwitchStatusXswi {
     pub pos: ::std::option::Option<super::commonmodule::StatusDps>,
 }
 /// Switch status
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchStatus {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -148,7 +150,7 @@ pub struct SwitchStatus {
     pub device_status: ::std::option::Option<super::commonmodule::DeviceStatus>,
 }
 /// Switch status profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchStatusProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -164,7 +166,7 @@ pub struct SwitchStatusProfile {
     pub switch_status: ::std::option::Option<SwitchStatus>,
 }
 /// Specialized 61850 FSCC class.  LN: Schedule controller   Name: FSCC
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchControlFscc {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -174,7 +176,7 @@ pub struct SwitchControlFscc {
     pub switch_control_schedule_fsch: ::std::option::Option<super::commonmodule::SwitchControlScheduleFsch>,
 }
 /// Switch discrete control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -187,7 +189,7 @@ pub struct SwitchControl {
     pub switch_control_fscc: ::std::option::Option<SwitchControlFscc>,
 }
 /// Switch control profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchControlProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]

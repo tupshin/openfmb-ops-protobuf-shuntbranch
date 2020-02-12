@@ -1,5 +1,7 @@
+use serde::{Serialize,Deserialize};
+
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationPoint {
     /// Black start enable
     #[prost(message, optional, tag="1")]
@@ -42,21 +44,21 @@ pub struct GenerationPoint {
     pub start_time: ::std::option::Option<super::commonmodule::ControlTimestamp>,
 }
 /// Curve shape setting (FC=SP) (CSG_SP)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationCsg {
     /// The array with the points specifying a curve shape.
     #[prost(message, repeated, tag="1")]
     pub crv_pts: ::std::vec::Vec<GenerationPoint>,
 }
 /// OpenFMB specialization for control schedule using:  LN: Schedule   Name: FSCH
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationControlScheduleFsch {
     /// Discrete value in GenerationCSG type
     #[prost(message, optional, tag="1")]
     pub val_dcsg: ::std::option::Option<GenerationCsg>,
 }
 /// LN: Schedule controller   Name: FSCC
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationControlFscc {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -66,7 +68,7 @@ pub struct GenerationControlFscc {
     pub generation_control_schedule_fsch: ::std::option::Option<GenerationControlScheduleFsch>,
 }
 /// Generation control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -82,7 +84,7 @@ pub struct GenerationControl {
 /// power. For example, individual machines within a set may be defined for scheduling purposes while a
 /// single control signal is derived for the set. In this case there would be a GeneratingUnit for each
 /// member of the set and an additional GeneratingUnit corresponding to the set.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GeneratingUnit {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -92,7 +94,7 @@ pub struct GeneratingUnit {
     pub max_operating_p: ::std::option::Option<super::commonmodule::ActivePower>,
 }
 /// Generation control profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationControlProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -108,7 +110,7 @@ pub struct GenerationControlProfile {
     pub ied: ::std::option::Option<super::commonmodule::Ied>,
 }
 /// Generation reading value
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationReading {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -124,7 +126,7 @@ pub struct GenerationReading {
     pub reading_mmxu: ::std::option::Option<super::commonmodule::ReadingMmxu>,
 }
 /// Generation reading profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationReadingProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -140,7 +142,7 @@ pub struct GenerationReadingProfile {
     pub ied: ::std::option::Option<super::commonmodule::Ied>,
 }
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationPointStatus {
     /// Black start enable
     #[prost(message, optional, tag="1")]
@@ -177,7 +179,7 @@ pub struct GenerationPointStatus {
     pub voltage_set_point_enabled: ::std::option::Option<super::commonmodule::ControlDpc>,
 }
 /// Specialized 61850 ZGEN class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationEventAndStatusZgen {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -199,14 +201,14 @@ pub struct GenerationEventAndStatusZgen {
     pub point_status: ::std::option::Option<GenerationPointStatus>,
 }
 /// Specialized generation event ZGEN
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationEventZgen {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub generation_event_and_status_zgen: ::std::option::Option<GenerationEventAndStatusZgen>,
 }
 /// Generation event
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationEvent {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -216,7 +218,7 @@ pub struct GenerationEvent {
     pub generation_event_zgen: ::std::option::Option<GenerationEventZgen>,
 }
 /// Generation event profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationEventProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -232,14 +234,14 @@ pub struct GenerationEventProfile {
     pub ied: ::std::option::Option<super::commonmodule::Ied>,
 }
 /// Specialized 61850 ZGEN class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationStatusZgen {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub generation_event_and_status_zgen: ::std::option::Option<GenerationEventAndStatusZgen>,
 }
 /// Generation status
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationStatus {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -249,7 +251,7 @@ pub struct GenerationStatus {
     pub generation_status_zgen: ::std::option::Option<GenerationStatusZgen>,
 }
 /// Generation status profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct GenerationStatusProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]

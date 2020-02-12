@@ -1,5 +1,7 @@
+use serde::{Serialize,Deserialize};
+
 /// Specialized 61850 ZBAT class  LN: Battery   Name: ZBAT
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssEventZbat {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -21,7 +23,7 @@ pub struct EssEventZbat {
     pub stdby: ::std::option::Option<super::commonmodule::StatusSps>,
 }
 /// ESS inverter high level function to maintain frequency within dead bands.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct FrequencyRegulation {
     /// uint/0.01Hz  Frequency regulation is performed when the grid frequency goes beyond the dead
     /// bands. The dead bands are defined as follows: Upper DB = frequency set point + dead band plus Lower
@@ -61,7 +63,7 @@ pub struct FrequencyRegulation {
     pub under_frequency_droop: ::std::option::Option<f32>,
 }
 /// ESS inverter high level function to maintain power level by charging or discharging
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct PeakShaving {
     /// uint/1kW  If the supervised power goes below this limit, the ESS will charge to maintain this limit.
     #[prost(message, optional, tag="1")]
@@ -83,7 +85,7 @@ pub struct PeakShaving {
     pub soc_management_allowed_low_limit: ::std::option::Option<f32>,
 }
 /// ESS inverter high level function to shut down ESS if SOC exceeds high or low limits.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SocLimit {
     /// uint/1%  These limits define the operational range of the battery. If a lineup reaches the SOC
     /// high limit, the inverter’s output is reduced to 0. Charging is then blocked until the hysteresis is
@@ -114,7 +116,7 @@ pub struct SocLimit {
     pub soc_low_limit_hysteresis: ::std::option::Option<f32>,
 }
 /// ESS inverter high level function to maintain SOC within dead bands
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SocManagement {
     /// uint/1%  Define a dead band (DB) around the SOC set point. When the battery SOC goes outside the
     /// dead band, the SOC management executes and bring the SOC back to the set point. Upper DB = set point
@@ -137,7 +139,7 @@ pub struct SocManagement {
     pub soc_set_point: ::std::option::Option<f32>,
 }
 /// Voltage regulation function
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct VoltageRegulation {
     /// uint/0.1%  The droops define the reaction of the PCS to under/over voltage events. A droop of 1%
     /// means that the PCS will output 100% power if the voltage is 1% of the nominal voltage away from the
@@ -166,7 +168,7 @@ pub struct VoltageRegulation {
     pub voltage_set_point: ::std::option::Option<f32>,
 }
 /// ESS inverter high level function to maintain voltage within droop dead bands.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct VoltageDroop {
     /// Control value (TRUE or FALSE)
     #[prost(message, optional, tag="1")]
@@ -176,7 +178,7 @@ pub struct VoltageDroop {
     pub voltage_regulation: ::std::option::Option<VoltageRegulation>,
 }
 /// ESS inverter high level function to maintain voltage within dead bands.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct VoltagePi {
     /// Control value (TRUE or FALSE)
     #[prost(message, optional, tag="1")]
@@ -186,7 +188,7 @@ pub struct VoltagePi {
     pub voltage_regulation: ::std::option::Option<VoltageRegulation>,
 }
 /// ESS inverter high level function to reduce (smooth) charging or discharging rate of change.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct CapacityFirming {
     /// Control value (TRUE or FALSE)
     #[prost(message, optional, tag="1")]
@@ -203,7 +205,7 @@ pub struct CapacityFirming {
     pub limit_positive_dp_dt: ::std::option::Option<f32>,
 }
 /// ESS inverter high level functions.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssFunction {
     /// ESS inverter high level function to reduce (smooth) charging or discharging rate of change.
     #[prost(message, optional, tag="1")]
@@ -228,7 +230,7 @@ pub struct EssFunction {
     pub voltage_pi: ::std::option::Option<VoltagePi>,
 }
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssPointStatus {
     /// Black start enable
     #[prost(message, optional, tag="1")]
@@ -271,7 +273,7 @@ pub struct EssPointStatus {
     pub voltage_set_point_enabled: ::std::option::Option<super::commonmodule::ControlDpc>,
 }
 /// Specialized 61850 ZGEN class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssEventAndStatusZgen {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -293,14 +295,14 @@ pub struct EssEventAndStatusZgen {
     pub point_status: ::std::option::Option<EssPointStatus>,
 }
 /// Specialized 61850 ZGEN class for ESS event profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssEventZgen {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub e_ss_event_and_status_zgen: ::std::option::Option<EssEventAndStatusZgen>,
 }
 /// ESS event
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssEvent {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -313,7 +315,7 @@ pub struct EssEvent {
     pub ess_event_zgen: ::std::option::Option<EssEventZgen>,
 }
 /// ESS event profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssEventProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -329,7 +331,7 @@ pub struct EssEventProfile {
     pub ied: ::std::option::Option<super::commonmodule::Ied>,
 }
 /// ESS reading value
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssReading {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -345,7 +347,7 @@ pub struct EssReading {
     pub reading_mmxu: ::std::option::Option<super::commonmodule::ReadingMmxu>,
 }
 /// ESS reading profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssReadingProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -361,7 +363,7 @@ pub struct EssReadingProfile {
     pub ied: ::std::option::Option<super::commonmodule::Ied>,
 }
 /// Specialized 61850 ZBAT
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssStatusZbat {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -380,14 +382,14 @@ pub struct EssStatusZbat {
     pub stdby: ::std::option::Option<super::commonmodule::StatusSps>,
 }
 /// Specialized 61850 ZGEN class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssStatusZgen {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub e_ss_event_and_status_zgen: ::std::option::Option<EssEventAndStatusZgen>,
 }
 /// ESS status
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssStatus {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -400,7 +402,7 @@ pub struct EssStatus {
     pub ess_status_zgen: ::std::option::Option<EssStatusZgen>,
 }
 /// ESS status profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssStatusProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -416,7 +418,7 @@ pub struct EssStatusProfile {
     pub ied: ::std::option::Option<super::commonmodule::Ied>,
 }
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssPoint {
     /// Black start enable
     #[prost(message, optional, tag="1")]
@@ -465,21 +467,21 @@ pub struct EssPoint {
     pub start_time: ::std::option::Option<super::commonmodule::ControlTimestamp>,
 }
 /// Curve shape setting (FC=SP) (CSG_SP)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Esscsg {
     /// The array with the points specifying a curve shape.
     #[prost(message, repeated, tag="1")]
     pub crv_pts: ::std::vec::Vec<EssPoint>,
 }
 /// OpenFMB specialization for control schedule using:  LN: Schedule   Name: FSCH
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssControlScheduleFsch {
     /// Discrete value in ESSCSG type
     #[prost(message, optional, tag="1")]
     pub val_dcsg: ::std::option::Option<Esscsg>,
 }
 /// Specialized 61850 FSCC class.  LN: Schedule controller   Name: FSCC
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssControlFscc {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -489,7 +491,7 @@ pub struct EssControlFscc {
     pub ess_control_schedule_fsch: ::std::option::Option<EssControlScheduleFsch>,
 }
 /// ESS control class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -502,7 +504,7 @@ pub struct EssControl {
     pub ess_control_fscc: ::std::option::Option<EssControlFscc>,
 }
 /// ESS control profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EssControlProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]

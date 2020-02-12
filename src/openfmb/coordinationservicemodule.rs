@@ -1,10 +1,12 @@
-#[derive(Clone, PartialEq, ::prost::Message)]
+use serde::{Serialize,Deserialize};
+
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalCoordinationServiceModeKind {
     #[prost(enumeration="CoordinationServiceModeKind", tag="1")]
     pub value: i32,
 }
 /// Coordination service mode kind
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EngCoordinationServiceModeKind {
     /// The value of the coordination service mode.
     #[prost(enumeration="CoordinationServiceModeKind", tag="1")]
@@ -15,7 +17,7 @@ pub struct EngCoordinationServiceModeKind {
 }
 /// OpenFMB specialization for coordination service control, DCSC (Distributed Coordination Service
 /// Control), following 61850 naming convention.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct CoordinationControlDcsc {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -28,7 +30,7 @@ pub struct CoordinationControlDcsc {
     pub island: ::std::option::Option<super::commonmodule::ControlDpc>,
 }
 /// Switch discrete control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct CoordinationControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -41,7 +43,7 @@ pub struct CoordinationControl {
     pub coordination_control_dcsc: ::std::option::Option<CoordinationControlDcsc>,
 }
 /// Switch control profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct CoordinationControlProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -55,7 +57,7 @@ pub struct CoordinationControlProfile {
 }
 /// OpenFMB specialization for coordination service control, DCSC (Distributed Coordination Service
 /// Control), following 61850 naming convention.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct CoordinationEventDcsc {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -83,7 +85,7 @@ pub struct CoordinationEventDcsc {
     pub permissible_stop: ::std::option::Option<super::commonmodule::StatusSps>,
 }
 /// Switch event
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct CoordinationEvent {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -93,7 +95,7 @@ pub struct CoordinationEvent {
     pub coordination_event_dcsc: ::std::option::Option<CoordinationEventDcsc>,
 }
 /// Switch event profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct CoordinationEventProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -107,7 +109,7 @@ pub struct CoordinationEventProfile {
 }
 /// OpenFMB specialization for coordination service control, DCSC (Distributed Coordination Service
 /// Control), following 61850 naming convention.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct CoordinationStatusDcsc {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -135,7 +137,7 @@ pub struct CoordinationStatusDcsc {
     pub permissible_stop: ::std::option::Option<super::commonmodule::StatusSps>,
 }
 /// Switch event
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct CoordinationStatus {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -145,7 +147,7 @@ pub struct CoordinationStatus {
     pub coordination_status_dcsc: ::std::option::Option<CoordinationStatusDcsc>,
 }
 /// Switch event profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct CoordinationStatusProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]

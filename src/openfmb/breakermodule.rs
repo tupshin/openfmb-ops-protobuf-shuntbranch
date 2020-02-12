@@ -1,6 +1,8 @@
+use serde::{Serialize,Deserialize};
+
 /// OpenFMB specialization for BreakerDiscreteControlProfile: Added blk  LN: Circuit breaker   Name:
 /// XCBR
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct BreakerDiscreteControlXcbr {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -10,7 +12,7 @@ pub struct BreakerDiscreteControlXcbr {
     pub pos: ::std::option::Option<super::commonmodule::ControlDpc>,
 }
 /// Breaker discrete control class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct BreakerDiscreteControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -28,14 +30,14 @@ pub struct BreakerDiscreteControl {
 /// A mechanical switching device capable of making, carrying, and breaking currents under normal
 /// circuit conditions and also making, carrying for a specified time, and breaking currents under
 /// specified abnormal circuit conditions e.g.  those of short circuit.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Breaker {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub conducting_equipment: ::std::option::Option<super::commonmodule::ConductingEquipment>,
 }
 /// Instructs an end device (or an end device group) to perform a specified action.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct BreakerDiscreteControlProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -51,7 +53,7 @@ pub struct BreakerDiscreteControlProfile {
     pub ied: ::std::option::Option<super::commonmodule::Ied>,
 }
 /// Breaker event class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct BreakerEvent {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -61,7 +63,7 @@ pub struct BreakerEvent {
     pub status_and_event_xcbr: ::std::option::Option<super::commonmodule::StatusAndEventXcbr>,
 }
 /// Breaker event profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct BreakerEventProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -77,7 +79,7 @@ pub struct BreakerEventProfile {
     pub ied: ::std::option::Option<super::commonmodule::Ied>,
 }
 /// MISSING DOCUMENTATION!!!
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct BreakerReading {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -96,7 +98,7 @@ pub struct BreakerReading {
     pub reading_mmxu: ::std::option::Option<super::commonmodule::ReadingMmxu>,
 }
 /// Breaker reading profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct BreakerReadingProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -112,7 +114,7 @@ pub struct BreakerReadingProfile {
     pub ied: ::std::option::Option<super::commonmodule::Ied>,
 }
 /// Status of a breaker
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct BreakerStatus {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -125,7 +127,7 @@ pub struct BreakerStatus {
     pub device_status: ::std::option::Option<super::commonmodule::DeviceStatus>,
 }
 /// Breaker status profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct BreakerStatusProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]

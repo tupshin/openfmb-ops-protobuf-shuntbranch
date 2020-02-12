@@ -1,5 +1,7 @@
+use serde::{Serialize,Deserialize};
+
 /// Specialized 61850 FSCC class.  LN: Schedule controller   Name: FSCC
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RecloserControlFscc {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -9,7 +11,7 @@ pub struct RecloserControlFscc {
     pub switch_control_schedule_fsch: ::std::option::Option<super::commonmodule::SwitchControlScheduleFsch>,
 }
 /// Recloser discrete control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RecloserControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -23,7 +25,7 @@ pub struct RecloserControl {
 }
 /// Pole-mounted fault interrupter with built-in phase and ground relays, current transformer (CT),
 /// and supplemental controls.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Recloser {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -34,7 +36,7 @@ pub struct Recloser {
 }
 /// Recloser control profile.  Instructs an end device (or an end device group) to perform a
 /// specified action.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RecloserControlProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -51,7 +53,7 @@ pub struct RecloserControlProfile {
 }
 /// OpenFMB specialization for RecloserDiscreteControlProfile: Added blk  LN: Circuit
 /// breaker   Name: XCBR
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RecloserDiscreteControlXcbr {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -61,7 +63,7 @@ pub struct RecloserDiscreteControlXcbr {
     pub pos: ::std::option::Option<super::commonmodule::ControlDpc>,
 }
 /// Recloser discrete control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RecloserDiscreteControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -78,7 +80,7 @@ pub struct RecloserDiscreteControl {
 }
 /// Recloser control profile.  Instructs an end device (or an end device group) to perform a
 /// specified action.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RecloserDiscreteControlProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -94,7 +96,7 @@ pub struct RecloserDiscreteControlProfile {
     pub recloser_discrete_control: ::std::option::Option<RecloserDiscreteControl>,
 }
 /// Recloser event
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RecloserEvent {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -104,7 +106,7 @@ pub struct RecloserEvent {
     pub status_and_event_xcbr: ::std::option::Option<super::commonmodule::StatusAndEventXcbr>,
 }
 /// Recloser event profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RecloserEventProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -120,7 +122,7 @@ pub struct RecloserEventProfile {
     pub recloser_event: ::std::option::Option<RecloserEvent>,
 }
 /// Recloser reading value
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RecloserReading {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -139,7 +141,7 @@ pub struct RecloserReading {
     pub reading_mmxu: ::std::option::Option<super::commonmodule::ReadingMmxu>,
 }
 /// Recloser reading profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RecloserReadingProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -155,7 +157,7 @@ pub struct RecloserReadingProfile {
     pub recloser_reading: ::std::vec::Vec<RecloserReading>,
 }
 /// Recloser status
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RecloserStatus {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -168,7 +170,7 @@ pub struct RecloserStatus {
     pub device_status: ::std::option::Option<super::commonmodule::DeviceStatus>,
 }
 /// Recloser status profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RecloserStatusProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]

@@ -1,17 +1,19 @@
+use serde::{Serialize,Deserialize};
+
 /// Shunt compensator system
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntSystem {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub conducting_equipment: ::std::option::Option<super::commonmodule::ConductingEquipment>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalSwitchingCapabilityKind {
     #[prost(enumeration="SwitchingCapabilityKind", tag="1")]
     pub value: i32,
 }
 /// <<abstract>> Enumerated status (ENS)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EnsSwitchingCapabilityKind {
     /// If true, 'q.operatorBlocked'=true, and the process value is no longer updated.
     #[prost(message, optional, tag="1")]
@@ -27,7 +29,7 @@ pub struct EnsSwitchingCapabilityKind {
     pub t: ::std::option::Option<super::commonmodule::Timestamp>,
 }
 /// LN: Power shunt   Name: YPSH
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntEventAndStatusYpsh {
     /// (controllable) If true, 'close' action has been blocked; can be set from another logical node. 
     /// Operating capability 'ShOpCap' does not reflect the blocked closing.
@@ -45,7 +47,7 @@ pub struct ShuntEventAndStatusYpsh {
     pub sh_op_cap: ::std::option::Option<EnsSwitchingCapabilityKind>,
 }
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntPoint {
     /// Regulator control
     #[prost(message, optional, tag="1")]
@@ -55,21 +57,21 @@ pub struct ShuntPoint {
     pub start_time: ::std::option::Option<super::commonmodule::Timestamp>,
 }
 /// Curve shape setting (FC=SP) (CSG_SP)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntCsg {
     /// The array with the points specifying a curve shape.
     #[prost(message, repeated, tag="1")]
     pub crv_pts: ::std::vec::Vec<ShuntPoint>,
 }
 /// OpenFMB specialization for control schedule using:  LN: Schedule   Name: FSCH
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntControlScheduleFsch {
     /// Control value in CSG type
     #[prost(message, optional, tag="1")]
     pub val_csg: ::std::option::Option<ShuntCsg>,
 }
 /// Using 61850 FSCC for shunt control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntControlFscc {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -79,7 +81,7 @@ pub struct ShuntControlFscc {
     pub shunt_control_schedule_fsch: ::std::option::Option<ShuntControlScheduleFsch>,
 }
 /// Regulator control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -93,7 +95,7 @@ pub struct ShuntControl {
 }
 /// Shunt control profile.  Instructs an end device (or an end device group) to perform a specified
 /// action.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntControlProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -109,7 +111,7 @@ pub struct ShuntControlProfile {
     pub shunt_system: ::std::option::Option<ShuntSystem>,
 }
 /// OpenFMB specialization for shunt discrete control:
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntDiscreteControlZcap {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -119,7 +121,7 @@ pub struct ShuntDiscreteControlZcap {
     pub pos: ::std::option::Option<super::commonmodule::ControlDpc>,
 }
 /// Shunt discrete control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntDiscreteControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -133,7 +135,7 @@ pub struct ShuntDiscreteControl {
 }
 /// Shunt discrete control profile.  Instructs an end device (or an end device group) to perform a
 /// specified action.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntDiscreteControlProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -149,14 +151,14 @@ pub struct ShuntDiscreteControlProfile {
     pub shunt_system: ::std::option::Option<ShuntSystem>,
 }
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntEventAndStatusPoint {
     /// Regulator control
     #[prost(message, optional, tag="1")]
     pub event_and_status: ::std::option::Option<ShuntEventAndStatusYpsh>,
 }
 /// OpenFMB 61850 specialization for both ShuntEventProfile and ShuntStatusProfile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntEventAndStatusZcap {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -169,7 +171,7 @@ pub struct ShuntEventAndStatusZcap {
     pub point_status: ::std::option::Option<ShuntEventAndStatusPoint>,
 }
 /// Shunt event
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntEvent {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -179,7 +181,7 @@ pub struct ShuntEvent {
     pub shunt_event_and_status_zcap: ::std::option::Option<ShuntEventAndStatusZcap>,
 }
 /// Shunt status profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntEventProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -195,7 +197,7 @@ pub struct ShuntEventProfile {
     pub shunt_system: ::std::option::Option<ShuntSystem>,
 }
 /// Shunt reading value
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntReading {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -211,7 +213,7 @@ pub struct ShuntReading {
     pub reading_mmxu: ::std::option::Option<super::commonmodule::ReadingMmxu>,
 }
 /// Shunt reading profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntReadingProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -227,7 +229,7 @@ pub struct ShuntReadingProfile {
     pub shunt_system: ::std::option::Option<ShuntSystem>,
 }
 /// Shunt status
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntStatus {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -237,7 +239,7 @@ pub struct ShuntStatus {
     pub shunt_event_and_status_zcap: ::std::option::Option<ShuntEventAndStatusZcap>,
 }
 /// Shunt status profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ShuntStatusProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]

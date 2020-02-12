@@ -1,6 +1,8 @@
+use serde::{Serialize,Deserialize};
+
 /// This is a root class to provide common identification for all classes needing identification and
 /// naming attributes.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct IdentifiedObject {
     /// MISSING DOCUMENTATION!!!
     #[prost(message, optional, tag="1")]
@@ -15,7 +17,7 @@ pub struct IdentifiedObject {
 }
 /// An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are
 /// connected at physical connection points called connectivity nodes.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct AcdcTerminal {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -35,18 +37,18 @@ pub struct AcdcTerminal {
     #[prost(message, optional, tag="3")]
     pub sequence_number: ::std::option::Option<i32>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalUnitSymbolKind {
     #[prost(enumeration="UnitSymbolKind", tag="1")]
     pub value: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalUnitMultiplierKind {
     #[prost(enumeration="UnitMultiplierKind", tag="1")]
     pub value: i32,
 }
 /// MISSING DOCUMENTATION!!!
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ActivePower {
     /// MISSING DOCUMENTATION!!!
     #[prost(message, optional, tag="1")]
@@ -58,13 +60,13 @@ pub struct ActivePower {
     #[prost(message, optional, tag="3")]
     pub value: ::std::option::Option<f32>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalPhaseCodeKind {
     #[prost(enumeration="PhaseCodeKind", tag="1")]
     pub value: i32,
 }
 /// Analogue value (AnalogueValue)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct AnalogueValue {
     /// Floating point representation of the measured value. The formula to convert between 'f' and the
     /// process value (pVal) shall be: <i>pVal</i>='f'*10exp('Unit.multiplier') in ['Unit.SIUnit'].
@@ -76,13 +78,13 @@ pub struct AnalogueValue {
     #[prost(message, optional, tag="2")]
     pub i: ::std::option::Option<i32>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalValidityKind {
     #[prost(enumeration="ValidityKind", tag="1")]
     pub value: i32,
 }
 /// Describes some reasons in case 'validity' is not 'good'.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct DetailQual {
     /// (default=false) If true, the value may not be a correct value due to a reference being out of
     /// calibration. The server shall decide if validity shall be set to invalid or questionable (used for
@@ -133,7 +135,7 @@ pub struct DetailQual {
     #[prost(bool, tag="8")]
     pub overflow: bool,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalSourceKind {
     #[prost(enumeration="SourceKind", tag="1")]
     pub value: i32,
@@ -143,7 +145,7 @@ pub struct OptionalSourceKind {
 /// different quality attributes are <i>not</i> independent.The default value shall be applied if the
 /// functionality of the related attribute is not supported. The mapping may specify to exclude the
 /// attribute from the message if it is not supported or if the default value applies.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Quality {
     /// Describes some reasons in case 'validity' is not 'good'.
     #[prost(message, optional, tag="1")]
@@ -174,13 +176,13 @@ pub struct Quality {
     #[prost(enumeration="ValidityKind", tag="5")]
     pub validity: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalTimeAccuracyKind {
     #[prost(enumeration="TimeAccuracyKind", tag="1")]
     pub value: i32,
 }
 /// Information about the quality of the time source of the sending IED.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct TimeQuality {
     /// If true, the time source of the sending device is unreliable and the value of the time stamp
     /// shall be ignored.
@@ -204,7 +206,7 @@ pub struct TimeQuality {
 /// SCSMs.The NULL time stamp has all fields set to 0 (zero).The relation between a timestamp value, the
 /// synchronization of an internal time with an external time source (for example, UTC time), and other
 /// information related to time model are available as requirements in Clause 21.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Timestamp {
     /// Fractional of the current second when the value of time stamp has been determined. It shall be
     /// calculated as (SUM from i=0 to 31 of bi*2**-(i+1)).
@@ -218,7 +220,7 @@ pub struct Timestamp {
     pub tq: ::std::option::Option<TimeQuality>,
 }
 /// Unit definition (Unit)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Unit {
     /// (default='') Unit multiplier.
     #[prost(message, optional, tag="1")]
@@ -228,7 +230,7 @@ pub struct Unit {
     pub si_unit: i32,
 }
 /// Measured value (MV)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Mv {
     /// Value of the magnitude based on a deadband calculation from the instantaneous value 'instMag'.
     /// The value of 'mag' shall be updated to the current instantaneous value 'instMag' when the value has
@@ -250,14 +252,14 @@ pub struct Mv {
     pub units: ::std::option::Option<Unit>,
 }
 /// IEC61850 logical node.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct LogicalNode {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub identified_object: ::std::option::Option<IdentifiedObject>,
 }
 /// LN: Generic process I/O   Name: GGIO
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct AnalogStatusGgio {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -270,7 +272,7 @@ pub struct AnalogStatusGgio {
     pub phase: ::std::option::Option<OptionalPhaseCodeKind>,
 }
 /// Analogue value control (AnalogueValueCtl)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct AnalogueValueCtl {
     /// Floating point representation of the measured value.  See 'AnalogueValue.f'.
     #[prost(message, optional, tag="1")]
@@ -282,7 +284,7 @@ pub struct AnalogueValueCtl {
 /// This is a root class similar to IdentifiedObject but without the mRID. The reason to separate
 /// the two classes is because the mRID may need to be defined as a separate key field for technology
 /// such as the DDS implementation.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct NamedObject {
     /// MISSING DOCUMENTATION!!!
     #[prost(message, optional, tag="1")]
@@ -292,7 +294,7 @@ pub struct NamedObject {
     pub name: ::std::option::Option<::std::string::String>,
 }
 /// The parts of a power system that are physical devices, electronic or mechanical.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ApplicationSystem {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -302,7 +304,7 @@ pub struct ApplicationSystem {
     pub m_rid: std::string::String,
 }
 /// Analogue setting (FC=SP) (ASG_SP)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Asg {
     /// The value of the analogue setting.
     #[prost(message, optional, tag="1")]
@@ -312,7 +314,7 @@ pub struct Asg {
     pub units: ::std::option::Option<Unit>,
 }
 /// Binary counter reading (BCR)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Bcr {
     /// Binary counter status represented as an integer value; wraps to 0 at the maximum or minimum
     /// value of INT64.
@@ -329,7 +331,7 @@ pub struct Bcr {
     pub units: ::std::option::Option<OptionalUnitSymbolKind>,
 }
 /// Specialized 61850 SPS class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct StatusSps {
     /// MISSING DOCUMENTATION!!!
     #[prost(message, optional, tag="1")]
@@ -342,7 +344,7 @@ pub struct StatusSps {
     pub t: ::std::option::Option<Timestamp>,
 }
 /// LN: Generic process I/O   Name: GGIO
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct BooleanStatusGgio {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -355,7 +357,7 @@ pub struct BooleanStatusGgio {
     pub phase: ::std::option::Option<OptionalPhaseCodeKind>,
 }
 /// IEC61850-7-2 Service parameter for conditions checking
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct CheckConditions {
     /// InterlockCheck is used for the device to be controlled to check if other devices are in proper
     /// state for the control command.  One example is that 2 circuit breakers on a busbar need to be
@@ -367,7 +369,7 @@ pub struct CheckConditions {
     pub synchro_check: ::std::option::Option<bool>,
 }
 /// Vector definition (Vector)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Vector {
     /// (range=[-180...180]) Angle of the complex value (Unit.SIUnit='deg' and Unit.multiplier='');
     /// angle reference is defined in the context where this type is used.
@@ -378,7 +380,7 @@ pub struct Vector {
     pub mag: ::std::option::Option<AnalogueValue>,
 }
 /// Complex measured value (CMV)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Cmv {
     /// Complex value based on a deadband calculation from the instantaneous value 'instCVal.mag'. The
     /// deadband calculation is done both on 'instCVal.mag' (based on 'db') and on 'instCVal.ang' (based on
@@ -397,7 +399,7 @@ pub struct Cmv {
     pub units: ::std::option::Option<Unit>,
 }
 /// Asset representation of a ConductingEquipment.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ConductingEquipment {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -408,7 +410,7 @@ pub struct ConductingEquipment {
 }
 /// An AC electrical connection point to a piece of conducting equipment. Terminals are connected at
 /// physical connection points called connectivity nodes.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Terminal {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -419,14 +421,14 @@ pub struct Terminal {
     pub phases: ::std::option::Option<OptionalPhaseCodeKind>,
 }
 /// Reading associated with an equipment such as a recloser.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ConductingEquipmentTerminalReading {
     /// MISSING DOCUMENTATION!!!
     #[prost(message, optional, tag="1")]
     pub terminal: ::std::option::Option<Terminal>,
 }
 /// Specialized DPC 61850 CDC class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ControlDpc {
     /// Service parameter that determines the control activity ('false' for off, 'true' for on).
     #[prost(bool, tag="1")]
@@ -438,7 +440,7 @@ pub struct ControlDpc {
 /// information related to time model are available as requirements in Clause 21.  ControlTimestamp is a
 /// timestamp for future time point so it does not contain the time quality as the one contained in the
 /// normal Timestamp data type.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ControlTimestamp {
     /// Fractional of the current second when the value of time stamp has been determined. It shall be
     /// calculated as (SUM from i=0 to 31 of bi*2**-(i+1)).
@@ -448,13 +450,13 @@ pub struct ControlTimestamp {
     #[prost(uint64, tag="2")]
     pub seconds: u64,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalScheduleParameterKind {
     #[prost(enumeration="ScheduleParameterKind", tag="1")]
     pub value: i32,
 }
 /// Grid connect mode kind
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EngScheduleParameter {
     /// Schedule parameter type
     #[prost(enumeration="ScheduleParameterKind", tag="1")]
@@ -464,7 +466,7 @@ pub struct EngScheduleParameter {
     pub value: f32,
 }
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SchedulePoint {
     /// Schedule parameter
     #[prost(message, repeated, tag="1")]
@@ -474,21 +476,21 @@ pub struct SchedulePoint {
     pub start_time: ::std::option::Option<ControlTimestamp>,
 }
 /// Curve shape setting (FC=SP) (CSG_SP)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ScheduleCsg {
     /// The array with the points specifying a time schedule
     #[prost(message, repeated, tag="1")]
     pub sch_pts: ::std::vec::Vec<SchedulePoint>,
 }
 /// OpenFMB specialization for control schedule using:  LN: Schedule   Name: FSCH
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ControlScheduleFsch {
     /// Analog CSG
     #[prost(message, optional, tag="1")]
     pub val_acsg: ::std::option::Option<ScheduleCsg>,
 }
 /// OpenFMB specialization for logical node control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct LogicalNodeForControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -496,7 +498,7 @@ pub struct LogicalNodeForControl {
 }
 /// LN: Schedule controller   Name: FSCC  F:    Function (generic) SC:  Schedule Controller C:   
 /// Control (execution)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ControlFscc {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -509,7 +511,7 @@ pub struct ControlFscc {
     pub island_control_schedule_fsch: ::std::option::Option<ControlScheduleFsch>,
 }
 /// Integer status setting (FC=SP) (ING_SP)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ControlIng {
     /// The value of the status setting.
     #[prost(int32, tag="1")]
@@ -519,14 +521,14 @@ pub struct ControlIng {
     pub units: ::std::option::Option<Unit>,
 }
 /// &lt;&lt;statistics&gt;&gt; Integer controlled step position information (ISC)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ControlIsc {
     /// Service parameter that determines the control activity.
     #[prost(int32, tag="1")]
     pub ctl_val: i32,
 }
 /// Generic control message info.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct MessageInfo {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -536,14 +538,14 @@ pub struct MessageInfo {
     pub message_time_stamp: ::std::option::Option<Timestamp>,
 }
 /// Generic control message info.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ControlMessageInfo {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub message_info: ::std::option::Option<MessageInfo>,
 }
 /// Controllable single point (SPC)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ControlSpc {
     /// Service parameter that determines the control activity ('false' for off or deactivation, 'true'
     /// for on or activation).
@@ -554,7 +556,7 @@ pub struct ControlSpc {
 /// The attribute modBlk is used to tag out a device. if it is TRUE, any setpoints and control schedule
 /// in a message payload should be ignored.   It should also be presented in a status profile.  Any
 /// modBlk value change (i.e. TRUE to FALSE and vice versa) should trigger an event.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ControlValue {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -566,7 +568,7 @@ pub struct ControlValue {
     pub mod_blk: ::std::option::Option<bool>,
 }
 /// Interval between two date and time points.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct DateTimeInterval {
     /// End date and time of this interval.
     #[prost(message, optional, tag="1")]
@@ -576,7 +578,7 @@ pub struct DateTimeInterval {
     pub start: ::std::option::Option<i64>,
 }
 /// Phase to phase related measured values of a three-phase system (DEL)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Del {
     /// Value of phase A to phase B measurement.
     #[prost(message, optional, tag="1")]
@@ -589,7 +591,7 @@ pub struct Del {
     pub phs_ca: ::std::option::Option<Cmv>,
 }
 /// Generic control for switch, recloser and breaker.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct DeviceControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -610,13 +612,13 @@ pub struct DeviceControl {
     #[prost(message, optional, tag="6")]
     pub reclose_enabled: ::std::option::Option<ControlSpc>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalBehaviourModeKind {
     #[prost(enumeration="BehaviourModeKind", tag="1")]
     pub value: i32,
 }
 /// Behavior mode kind. ENS stands for Enumerated status
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EnsBehaviourModeKind {
     /// Quality of the value in 'stVal'.
     #[prost(message, optional, tag="1")]
@@ -628,13 +630,13 @@ pub struct EnsBehaviourModeKind {
     #[prost(message, optional, tag="3")]
     pub t: ::std::option::Option<Timestamp>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalHealthKind {
     #[prost(enumeration="HealthKind", tag="1")]
     pub value: i32,
 }
 /// &lt;&gt; Enumerated status (ENS)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EnsHealthKind {
     /// Textual description of the data. In case it is used within the CDC LPL, the description refers
     /// to the logical node.
@@ -645,7 +647,7 @@ pub struct EnsHealthKind {
     pub st_val: i32,
 }
 /// Logical node for event and status
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct LogicalNodeForEventAndStatus {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -658,7 +660,7 @@ pub struct LogicalNodeForEventAndStatus {
     pub ee_health: ::std::option::Option<EnsHealthKind>,
 }
 /// Generic status for switch, recloser and breaker.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct DeviceStatus {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -683,7 +685,7 @@ pub struct DeviceStatus {
     pub remote_enabled: ::std::option::Option<StatusSps>,
 }
 /// Generic user of energy - a  point of consumption on the power system model.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EnergyConsumer {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -692,25 +694,25 @@ pub struct EnergyConsumer {
     #[prost(message, optional, tag="2")]
     pub operating_limit: ::std::option::Option<::std::string::String>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalCalcMethodKind {
     #[prost(enumeration="CalcMethodKind", tag="1")]
     pub value: i32,
 }
 /// Calc method kind
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EngCalcMethodKind {
     /// The value of the status setting.
     #[prost(enumeration="CalcMethodKind", tag="1")]
     pub set_val: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalGridConnectModeKind {
     #[prost(enumeration="GridConnectModeKind", tag="1")]
     pub value: i32,
 }
 /// Grid connect mode kind
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EngGridConnectModeKind {
     /// The value of the status setting.
     #[prost(enumeration="GridConnectModeKind", tag="1")]
@@ -719,25 +721,25 @@ pub struct EngGridConnectModeKind {
     #[prost(message, optional, tag="2")]
     pub set_val_extension: ::std::option::Option<::std::string::String>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalPfSignKind {
     #[prost(enumeration="PfSignKind", tag="1")]
     pub value: i32,
 }
 /// Enumerated status setting (FC=SP) (ENG_SP)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EngPfSignKind {
     /// The value of the status setting.
     #[prost(enumeration="PfSignKind", tag="1")]
     pub set_val: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalDerGeneratorStateKind {
     #[prost(enumeration="DerGeneratorStateKind", tag="1")]
     pub value: i32,
 }
 /// DER generation state kind. ENS stands for Enumerated status
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EnsDerGeneratorStateKind {
     /// Quality of the value in 'stVal'.
     #[prost(message, optional, tag="1")]
@@ -749,13 +751,13 @@ pub struct EnsDerGeneratorStateKind {
     #[prost(message, optional, tag="3")]
     pub t: ::std::option::Option<Timestamp>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalDynamicTestKind {
     #[prost(enumeration="DynamicTestKind", tag="1")]
     pub value: i32,
 }
 /// Dynamic test kind. ENS stands for Enumerated status
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EnsDynamicTestKind {
     /// Quality of the value in 'stVal'.
     #[prost(message, optional, tag="1")]
@@ -768,7 +770,7 @@ pub struct EnsDynamicTestKind {
     pub t: ::std::option::Option<Timestamp>,
 }
 /// Grid connect event &amp; status mode kind
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EnsGridConnectModeKind {
     /// Actual Grid Connection Mode
     #[prost(enumeration="GridConnectModeKind", tag="1")]
@@ -778,28 +780,28 @@ pub struct EnsGridConnectModeKind {
     pub st_val_extension: std::string::String,
 }
 /// MISSING DOCUMENTATION!!!
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Ess {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub conducting_equipment: ::std::option::Option<ConductingEquipment>,
 }
 /// Generic event message information
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EventMessageInfo {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub message_info: ::std::option::Option<MessageInfo>,
 }
 /// Event value
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct EventValue {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub identified_object: ::std::option::Option<IdentifiedObject>,
 }
 /// The source where a forecast value is issued.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ForecastValueSource {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -813,7 +815,7 @@ pub struct ForecastValueSource {
 /// IED with an IEC61850 SERVER, we typically create an instance of the meta-model IED per connection.
 /// When the meta-model gets instantiated from an SCL file, there is the full description of IED and its
 /// functions.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ForecastIed {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -827,7 +829,7 @@ pub struct ForecastIed {
     pub source_date_time: i64,
 }
 /// Forecast value
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ForecastValue {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -841,14 +843,14 @@ pub struct ForecastValue {
 /// IED with an IEC61850 SERVER, we typically create an instance of the meta-model IED per connection.
 /// When the meta-model gets instantiated from an SCL file, there is the full description of IED and its
 /// functions.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Ied {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub identified_object: ::std::option::Option<IdentifiedObject>,
 }
 /// <<statistics>> Integer status (INS)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct StatusIns {
     /// Quality of the value in 'stVal'.
     #[prost(message, optional, tag="1")]
@@ -864,7 +866,7 @@ pub struct StatusIns {
     pub units: ::std::option::Option<Unit>,
 }
 /// Status expressed in integer based on IEC61850 GGIO.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct IntegerStatusGgio {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -879,7 +881,7 @@ pub struct IntegerStatusGgio {
 /// The current state for a measurement. A state value is an instance of a measurement from a
 /// specific source. Measurements can be associated with many state values, each representing a
 /// different source for the measurement.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct MeasurementValue {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -887,21 +889,21 @@ pub struct MeasurementValue {
 }
 /// Physical asset that performs the metering role of the usage point. Used for measuring
 /// consumption and detection of events.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Meter {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub conducting_equipment: ::std::option::Option<ConductingEquipment>,
 }
 /// Generic event message information
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptimizationMessageInfo {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub message_info: ::std::option::Option<MessageInfo>,
 }
 /// Specialized 61850 MMTN LN class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ReadingMmtn {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -935,7 +937,7 @@ pub struct ReadingMmtn {
     pub tot_wh: ::std::option::Option<Bcr>,
 }
 /// Specialized 61850 MMTN LN class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct PhaseMmtn {
     /// MISSING DOCUMENTATION!!!
     #[prost(message, optional, tag="1")]
@@ -957,7 +959,7 @@ pub struct PhaseMmtn {
     pub phs_ca: ::std::option::Option<ReadingMmtn>,
 }
 /// Grid connect mode kind
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RampRate {
     /// MISSING DOCUMENTATION!!!
     #[prost(message, optional, tag="1")]
@@ -973,14 +975,14 @@ pub struct RampRate {
     pub positive_real_power_kw_per_min: ::std::option::Option<f32>,
 }
 /// Generic reading message information
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ReadingMessageInfo {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub message_info: ::std::option::Option<MessageInfo>,
 }
 /// Specialized 61850 MMTR class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ReadingMmtr {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -1014,7 +1016,7 @@ pub struct ReadingMmtr {
     pub tot_wh: ::std::option::Option<Bcr>,
 }
 /// Phase to ground/neutral related measured values of a three-phase system (WYE)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Wye {
     /// Net current, as the algebraic sum of the instantaneous values of currents flowing through all
     /// live conductors and the neutral of a circuit at one point of the electrical installation ('phsA
@@ -1038,7 +1040,7 @@ pub struct Wye {
     pub phs_c: ::std::option::Option<Cmv>,
 }
 /// Specialized 61850 MMXU LN class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct ReadingMmxu {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -1082,13 +1084,13 @@ pub struct ReadingMmxu {
     #[prost(message, optional, tag="11")]
     pub w: ::std::option::Option<Wye>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalDbPosKind {
     #[prost(enumeration="DbPosKind", tag="1")]
     pub value: i32,
 }
 /// Specialized 61850 DPS class
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct StatusDps {
     /// Quality of the value in 'stVal'.
     #[prost(message, optional, tag="1")]
@@ -1102,7 +1104,7 @@ pub struct StatusDps {
 }
 /// OpenFMB specialization for breaker, recloser and switch status and event profiles:  LN: Circuit
 /// breaker   Name: XCBR
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct StatusAndEventXcbr {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -1115,7 +1117,7 @@ pub struct StatusAndEventXcbr {
     pub pos: ::std::option::Option<StatusDps>,
 }
 /// &lt;&lt;statistics&gt;&gt; Integer controlled step position information (ISC)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct StatusIsc {
     /// Quality of the value in 'valWTr'.
     #[prost(message, optional, tag="1")]
@@ -1128,14 +1130,14 @@ pub struct StatusIsc {
     pub t: ::std::option::Option<Timestamp>,
 }
 /// Generic status message information
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct StatusMessageInfo {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub message_info: ::std::option::Option<MessageInfo>,
 }
 /// Controllable single point (SPC)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct StatusSpc {
     /// Quality of the value in 'stVal'.
     #[prost(message, optional, tag="1")]
@@ -1148,14 +1150,14 @@ pub struct StatusSpc {
     pub t: ::std::option::Option<Timestamp>,
 }
 /// Status value
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct StatusValue {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
     pub identified_object: ::std::option::Option<IdentifiedObject>,
 }
 /// Visible string status (VSS)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct Vss {
     /// Quality of the value in 'stVal'.
     #[prost(message, optional, tag="1")]
@@ -1168,7 +1170,7 @@ pub struct Vss {
     pub t: ::std::option::Option<Timestamp>,
 }
 /// LN: Generic process I/O   Name: GGIO
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct StringStatusGgio {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -1181,7 +1183,7 @@ pub struct StringStatusGgio {
     pub str_in: ::std::option::Option<Vss>,
 }
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchPoint {
     /// Switch position
     #[prost(message, optional, tag="1")]
@@ -1191,20 +1193,20 @@ pub struct SwitchPoint {
     pub start_time: ::std::option::Option<ControlTimestamp>,
 }
 /// Curve shape setting (FC=SP) (CSG_SP)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchCsg {
     /// The array with the points specifying a curve shape.
     #[prost(message, repeated, tag="1")]
     pub crv_pts: ::std::vec::Vec<SwitchPoint>,
 }
 /// OpenFMB specialization for control schedule using:  LN: Schedule   Name: FSCH
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct SwitchControlScheduleFsch {
     /// Discrete value in SwitchCSG type
     #[prost(message, optional, tag="1")]
     pub val_dcsg: ::std::option::Option<SwitchCsg>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct OptionalStateKind {
     #[prost(enumeration="StateKind", tag="1")]
     pub value: i32,

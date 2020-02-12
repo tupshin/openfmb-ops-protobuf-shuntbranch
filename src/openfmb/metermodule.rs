@@ -1,5 +1,7 @@
+use serde::{Serialize,Deserialize};
+
 /// Resource reading value
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct MeterReading {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -15,7 +17,7 @@ pub struct MeterReading {
     pub reading_mmxu: ::std::option::Option<super::commonmodule::ReadingMmxu>,
 }
 /// Resource reading profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct MeterReadingProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]

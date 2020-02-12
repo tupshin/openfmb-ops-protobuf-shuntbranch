@@ -1,5 +1,7 @@
+use serde::{Serialize,Deserialize};
+
 /// LN: Automatic tap changer controller   Name: ATCC
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorControlAtcc {
     /// Centre of voltage control bandwidth (forward power flow presumed).
     #[prost(message, optional, tag="1")]
@@ -28,7 +30,7 @@ pub struct RegulatorControlAtcc {
     pub tap_pos: ::std::option::Option<super::commonmodule::ControlIsc>,
 }
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorPoint {
     /// Regulator control
     #[prost(message, optional, tag="1")]
@@ -56,21 +58,21 @@ pub struct RegulatorPoint {
     pub start_time: ::std::option::Option<super::commonmodule::Timestamp>,
 }
 /// Curve shape setting (FC=SP) (CSG_SP)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorCsg {
     /// The array with the points specifying a curve shape.
     #[prost(message, repeated, tag="1")]
     pub crv_pts: ::std::vec::Vec<RegulatorPoint>,
 }
 /// OpenFMB specialization for control schedule using:  LN: Schedule   Name: FSCH
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorControlScheduleFsch {
     /// Discrete value in RegulatorCSG type
     #[prost(message, optional, tag="1")]
     pub val_dcsg: ::std::option::Option<RegulatorCsg>,
 }
 /// Using 61850 FSCC for regulator control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorControlFscc {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -80,7 +82,7 @@ pub struct RegulatorControlFscc {
     pub regulator_control_schedule_fsch: ::std::option::Option<RegulatorControlScheduleFsch>,
 }
 /// Regulator control
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorControl {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -94,7 +96,7 @@ pub struct RegulatorControl {
 }
 /// Pole-mounted fault interrupter with built-in phase and ground relays, current transformer (CT),
 /// and supplemental controls.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorSystem {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -102,7 +104,7 @@ pub struct RegulatorSystem {
 }
 /// Regulator control profile.  Instructs an end device (or an end device group) to perform a
 /// specified action.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorControlProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -118,7 +120,7 @@ pub struct RegulatorControlProfile {
     pub regulator_system: ::std::option::Option<RegulatorSystem>,
 }
 /// LN: Automatic tap changer controller   Name: ATCC
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorEventAndStatusAtcc {
     /// Centre of voltage control bandwidth (forward power flow presumed).
     #[prost(message, optional, tag="1")]
@@ -148,7 +150,7 @@ pub struct RegulatorEventAndStatusAtcc {
     pub tap_pos: ::std::option::Option<super::commonmodule::StatusIsc>,
 }
 /// Point definition (Point)
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorEventAndStatusPoint {
     /// Regulator event and status
     #[prost(message, optional, tag="1")]
@@ -170,7 +172,7 @@ pub struct RegulatorEventAndStatusPoint {
     pub voltage_set_point_enabled: ::std::option::Option<super::commonmodule::StatusSpc>,
 }
 /// OpenFMB 61850 specialization for both RegulatorEventProfile and RegulatorStatusProfile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorEventAndStatusAncr {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -183,7 +185,7 @@ pub struct RegulatorEventAndStatusAncr {
     pub point_status: ::std::option::Option<RegulatorEventAndStatusPoint>,
 }
 /// Regulator event
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorEvent {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -193,7 +195,7 @@ pub struct RegulatorEvent {
     pub regulator_event_and_status_ancr: ::std::option::Option<RegulatorEventAndStatusAncr>,
 }
 /// Regulator event profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorEventProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -209,7 +211,7 @@ pub struct RegulatorEventProfile {
     pub regulator_system: ::std::option::Option<RegulatorSystem>,
 }
 /// Regulator reading value
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorReading {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -225,7 +227,7 @@ pub struct RegulatorReading {
     pub reading_mmxu: ::std::option::Option<super::commonmodule::ReadingMmxu>,
 }
 /// Regulator reading profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorReadingProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -241,7 +243,7 @@ pub struct RegulatorReadingProfile {
     pub regulator_system: ::std::option::Option<RegulatorSystem>,
 }
 /// Regulator status
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorStatus {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
@@ -251,7 +253,7 @@ pub struct RegulatorStatus {
     pub regulator_event_and_status_ancr: ::std::option::Option<RegulatorEventAndStatusAncr>,
 }
 /// Regulator status profile
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message, Serialize, Deserialize)]
 pub struct RegulatorStatusProfile {
     /// UML inherited base object
     #[prost(message, optional, tag="1")]
